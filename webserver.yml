@@ -1,0 +1,15 @@
+- hosts: docker
+  tasks:
+          - name: "installing httpd for webserver"
+            package:
+                    name: "httpd"
+                    state: present
+
+          - name: "copying webpages to /var/www/html"
+            copy:
+                    src: "index.html"
+                    dest: "/var/www/html/index.html"
+
+          - name: "starting webserver"
+            command : "/usr/sbin/httpd"
+
